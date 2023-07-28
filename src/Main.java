@@ -1,9 +1,9 @@
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         StepTracker tracker = new StepTracker(scanner);
-        MonthData data = new MonthData();
 
         while (true) {
             printMenu();
@@ -11,15 +11,15 @@ public class Main {
 
             if (i == 1) {
                 tracker.addNewNumberStepsPerDay();
-            }else if(i == 2){
+            } else if (i == 2) {
                 tracker.changeStepGoal();
-            }else if(i == 3){
-                data.printDaysAndStepsFromMonth();
-            }else if(i == 0) {
+            } else if (i == 3) {
+                tracker.printStatistic();
+            } else if (i == 0) {
                 System.out.println("Всего доброго!");
                 scanner.close();
                 return;
-            }else{
+            } else {
                 System.out.println("Такой команды нет, попробуйте еще раз.");
             }
 
@@ -27,11 +27,7 @@ public class Main {
     }
 
 
-
-
-
-
-    public static void printMenu(){
+    public static void printMenu() {
         System.out.println("Выберите нужный пункт :)");
         System.out.println("1 - Ввести количество шагов за определенный день");
         System.out.println("2 - Изменить цель по количеству шагов в день");
