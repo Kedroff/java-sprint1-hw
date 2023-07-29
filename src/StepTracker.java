@@ -27,18 +27,25 @@ public class StepTracker {
             System.out.println("Номер дня должен быть от 1 до 30");
             return;
         }
-        System.out.println("Введите количество шагов: ");
-        int steps = scanner.nextInt();
+        System.out.println("Введите количество шагов: ");           // Тут еще глянул и добавил проверку на то,
+        int steps = scanner.nextInt();                              // чтобы отриц. числа не сохранялись, а то в выводе
+        if (steps <= 0) {                                           // будет показывать отриц. значения и статистика будет испорена :(
+            System.out.println("Введите число больше 0!");
+            steps = 0;
+        }
 
         MonthData monthData = monthToData[month - 1];
         monthData.days[day - 1] = steps;
     }
 
+
     void changeStepGoal() {
         System.out.println("Введите новую цель шагов в день: ");
-        goalByStepsPerDay = scanner.nextInt();
-        if (goalByStepsPerDay <= 0) {
+        int newGoalByStepsPerDay = scanner.nextInt();
+        if (newGoalByStepsPerDay <= 0) {
             System.out.println("Введите число больше 0 ");
+        } else {
+            goalByStepsPerDay = newGoalByStepsPerDay;
         }
     }
 

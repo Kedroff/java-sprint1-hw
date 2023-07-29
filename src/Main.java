@@ -5,24 +5,33 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         StepTracker tracker = new StepTracker(scanner);
 
-        while (true) {
-            printMenu();
-            int i = scanner.nextInt();
 
-            if (i == 1) {
-                tracker.addNewNumberStepsPerDay();
-            } else if (i == 2) {
-                tracker.changeStepGoal();
-            } else if (i == 3) {
-                tracker.printStatistic();
-            } else if (i == 0) {
-                System.out.println("Всего доброго!");
-                scanner.close();
-                return;
+        while (true) {                                          // Ростислав, зацените как сделал,
+            printMenu();                                        // даже проверку на ввод реализовал :)
+            if (scanner.hasNextInt()) {
+                int i = scanner.nextInt();
+                switch (i) {
+                    case (1):
+                        tracker.addNewNumberStepsPerDay();
+                        break;
+                    case (2):
+                        tracker.changeStepGoal();
+                        break;
+                    case (3):
+                        tracker.printStatistic();
+                        break;
+                    case (0):
+                        System.out.println("Всего доброго!");
+                        scanner.close();
+                        return;
+                    default:
+                        System.out.println("Выберите пункт от 1-3, 0 - чтобы выйти");
+                        break;
+                }
             } else {
-                System.out.println("Такой команды нет, попробуйте еще раз.");
+                System.out.println("Вводить нужно только числа!!!!!!!!!!!!");
+                scanner.next();
             }
-
         }
     }
 
